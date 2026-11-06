@@ -47,15 +47,6 @@
 
   const isUnlocked = (day) => PREVIEW || !A.lockFutureDoors || day.date <= today;
 
-  /* ---------- remembered doors ---------- */
-  const STORE = `advent-${A.year}-opened`;
-  const opened = new Set();
-  try { JSON.parse(localStorage.getItem(STORE) || "[]").forEach((k) => opened.add(k)); } catch (e) {}
-  const remember = (k) => {
-    opened.add(k);
-    try { localStorage.setItem(STORE, JSON.stringify([...opened])); } catch (e) {}
-  };
-
   /* ---------- small SVG helpers ---------- */
   const STAR = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2l3.2 11.2L34 8l-5.2 10.8L38 20l-9.2 1.2L34 32l-10.8-5.2L20 38l-3.2-10.8L6 32l5.2-10.8L2 20l9.2-1.2L6 8l10.8 5.2z"/></svg>';
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -222,7 +213,6 @@
     li.dataset.key = day.key;
     const unlocked = isUnlocked(day);
     if (!unlocked) li.classList.add("is-locked");
-    if (unlocked && opened.has(day.key)) li.classList.add("is-open");
     if (todayEntry && todayEntry.key === day.key) li.classList.add("is-today");
 
     const month = day.date.getMonth() === 10 ? "<small>Nov</small>" : "";
@@ -258,9 +248,10 @@
       setStatus(`This door opens on ${fmtLong(day.date)}.`);
       return;
     }
+    if (dlg.open || closing || opening) return;
+    opening = true;
     const alreadyOpen = li.classList.contains("is-open");
     li.classList.add("is-open");
-    remember(day.key);
     const wait = alreadyOpen || reduceMotion ? 0 : 700;
     setTimeout(() => openWindow(day, li), wait);
   }
@@ -271,6 +262,9 @@
   const dlg = document.getElementById("window");
   let returnTo = null;
   let originEl = null;
+  let originCell = null;
+  let closing = false;
+  let opening = false;
 
   const songHTML = (song) => {
     if (!song || !song.title) return `<p class="placeholder">The song for this day will be added soon.</p>`;
@@ -308,6 +302,8 @@
     fillWindow(day);
     returnTo = li.querySelector(".door");
     originEl = li.querySelector(".opening");
+    originCell = li;
+    opening = false;
     dlg.showModal();
     dlg.scrollTop = 0;
     document.body.style.overflow = "hidden";
@@ -327,13 +323,13 @@
     );
   }
 
-  let closing = false;
   function closeWindow() {
     if (closing || !dlg.open) return;
     const done = () => {
       closing = false;
       dlg.close();
       document.body.style.overflow = "";
+      if (originCell) originCell.classList.remove("is-open");   // swing the door shut
       if (returnTo) returnTo.focus({ preventScroll: true });
     };
     if (reduceMotion || !originEl) return done();
