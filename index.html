@@ -25,7 +25,6 @@
         <ul>
           <li><a href="#season">The season</a></li>
           <li><a href="#calendar">Calendar</a></li>
-          <li><a href="#song">Song of the day</a></li>
         </ul>
       </nav>
     </div>
@@ -84,7 +83,7 @@
     <section class="calendar" id="calendar" aria-labelledby="cal-title">
       <div class="cal-head">
         <h2 id="cal-title" class="section-title">The Advent calendar</h2>
-        <p class="cal-intro">A door for every day from 29 November to Christmas. Each one opens on its day.</p>
+        <p class="cal-intro">A door for every day from 29 November to Christmas, each with a reading, a reflection and a song.</p>
         <p class="cal-status" id="cal-status" aria-live="polite"></p>
       </div>
 
@@ -94,24 +93,6 @@
           <span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span>
         </div>
         <div id="weeks"></div>
-      </div>
-    </section>
-
-    <!-- ============ SONG OF THE DAY ============ -->
-    <section class="song" id="song" aria-labelledby="song-title">
-      <div class="hymnal">
-        <div class="hymn-number" aria-hidden="true">
-          <span class="hymn-number-label">Day</span>
-          <span class="hymn-number-n" id="song-n">1</span>
-        </div>
-        <div class="hymn-body">
-          <h2 id="song-title" class="section-title">Song of the day</h2>
-          <p class="rubric" id="song-date"></p>
-          <p class="hymn-title" id="song-name"></p>
-          <p class="hymn-by" id="song-by"></p>
-          <div class="hymn-player" id="song-player"></div>
-          <button class="btn btn-quiet" id="song-open" type="button">Open this day’s door</button>
-        </div>
       </div>
     </section>
 

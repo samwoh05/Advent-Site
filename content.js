@@ -25,10 +25,11 @@ window.ADVENT = {
   // Change this to 3 to follow that tradition (wreath candle follows too).
   roseSunday: 4,
 
-  // Doors for future days stay shut until their date.
-  // Add ?preview to the address to unlock every door while you build,
-  // or ?today=2026-12-08 to see the site as it will look on that day.
-  lockFutureDoors: true,
+  // false: every door opens with a click, whatever the date.
+  // true:  doors for future days stay shut until their date
+  //        (add ?preview to the address to unlock them all while testing).
+  // ?today=2026-12-08 in the address shows the site as it will look on that day.
+  lockFutureDoors: false,
 
   days: {
     "2026-11-29": {

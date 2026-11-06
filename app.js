@@ -272,13 +272,13 @@
   let returnTo = null;
   let originEl = null;
 
-  const songHTML = (song, big) => {
+  const songHTML = (song) => {
     if (!song || !song.title) return `<p class="placeholder">The song for this day will be added soon.</p>`;
     let html = `<p class="hymn-title">${esc(song.title)}</p>`;
     if (song.by) html += `<p class="hymn-by">${esc(song.by)}</p>`;
     if (song.youtubeId) {
       html += `<div class="player-frame"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.youtubeId)}" title="${esc(song.title)}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
-    } else if (big !== false) {
+    } else {
       html += `<p class="placeholder">A recording will be added here.</p>`;
     }
     return html;
@@ -360,46 +360,10 @@
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeWindow();
   } });
 
-  /* =================================================================
-     SONG OF THE DAY (page section)
-     ================================================================= */
-  function buildSong() {
-    let day = todayEntry;
-    let label;
-    if (!day) {
-      day = today < start ? days[0] : days[days.length - 1];
-      label = today < start ? `The first song of Advent, for Sunday ${fmtShort(day.date)}` : `For ${fmtLong(day.date)}`;
-    } else {
-      label = `For today, ${fmtLong(day.date)}`;
-    }
-    document.getElementById("song-n").textContent = day.n;
-    document.getElementById("song-date").textContent = label;
-
-    const s = day.data.song;
-    document.getElementById("song-name").textContent = s && s.title ? s.title : "To be announced";
-    document.getElementById("song-by").textContent = s && s.by ? s.by : "";
-    const player = document.getElementById("song-player");
-    if (s && s.youtubeId) player.innerHTML = songHTML({ title: s.title, youtubeId: s.youtubeId }).replace(/^<p class="hymn-title">.*?<\/p>/, "");
-    else player.innerHTML = `<p class="placeholder">A recording will be added here.</p>`;
-
-    const btn = document.getElementById("song-open");
-    if (!isUnlocked(day)) {
-      btn.textContent = `Door opens on ${fmtShort(day.date)}`;
-      btn.disabled = true;
-      btn.style.opacity = ".55"; btn.style.cursor = "default";
-    }
-    btn.addEventListener("click", () => {
-      const li = document.querySelector(`.cell[data-key="${day.key}"]`);
-      li.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
-      setTimeout(() => onDoor(day, li), reduceMotion ? 0 : 600);
-    });
-  }
-
   /* ---------- go ---------- */
   buildWreath();
   heroStatus();
   buildCalendar();
-  buildSong();
   document.getElementById("year").textContent = A.year;
 
   requestAnimationFrame(() => {

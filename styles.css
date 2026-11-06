@@ -103,11 +103,6 @@ p { margin: 0 0 1em; }
   transition: background-color .2s;
 }
 .btn:hover { background: var(--violet-lo); box-shadow: inset 0 0 0 3px var(--violet-lo), inset 0 0 0 4px var(--gold-hi); }
-.btn-quiet {
-  background: transparent; color: var(--violet);
-  border: 1px solid var(--violet); box-shadow: none;
-}
-.btn-quiet:hover { background: var(--violet); color: var(--vellum); box-shadow: none; }
 
 /* ============ NAV ============ */
 .nav {
@@ -416,29 +411,13 @@ p { margin: 0 0 1em; }
 .cell.is-today .door { box-shadow: inset 0 0 0 1px var(--gold-hi), 0 0 0 2px var(--gold-hi), 0 0 22px rgba(226, 194, 122, .55); }
 .cell.is-today .lintel::after { content: "today"; display: block; font-size: .5em; font-style: italic; color: var(--vellum); margin-top: .15rem; }
 
-/* ============ SONG OF THE DAY ============ */
-.song { padding: clamp(3rem, 6vw, 5.5rem) var(--gutter); }
-.hymnal {
-  max-width: 900px; margin: 0 auto;
-  display: grid; grid-template-columns: auto 1fr; gap: clamp(1.5rem, 4vw, 3.5rem);
-  align-items: start;
-}
-.hymn-number {
-  display: flex; flex-direction: column; align-items: center;
-  padding: 1rem 1.3rem 1.2rem;
-  background: var(--wood); color: var(--vellum);
-  box-shadow: inset 0 0 0 4px var(--wood), inset 0 0 0 5px var(--gold);
-  min-width: 7.5rem;
-}
-.hymn-number-label { font-family: var(--serif-display); font-style: italic; color: var(--gold-hi); font-size: 1.1rem; }
-.hymn-number-n { font-family: var(--serif-display); font-size: 5rem; line-height: .95; }
+/* ============ SONG (inside each window) ============ */
 .hymn-title {
   font-family: var(--serif-display);
   font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.15;
   color: var(--violet); margin: .6rem 0 .2rem;
 }
 .hymn-by { font-style: italic; color: var(--ink-soft); }
-.hymn-player { margin: 1.2rem 0 1.5rem; }
 .player-frame { position: relative; aspect-ratio: 16 / 9; border: 1px solid var(--ink); background: var(--night); }
 .player-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .placeholder {
@@ -555,9 +534,6 @@ p { margin: 0 0 1em; }
   .nav a:not(.wordmark) { font-size: 1.05rem; }
   .week { grid-template-columns: repeat(3, 1fr); }
   .cell[data-kind="sunday"], .cell[data-kind="rose"], .cell[data-kind="christmas"] { grid-column: span 3; grid-row: span 1; aspect-ratio: 3 / 2.2; }
-  .hymnal { grid-template-columns: 1fr; }
-  .hymn-number { flex-direction: row; gap: .6rem; align-items: baseline; justify-self: start; min-width: 0; padding: .6rem 1.1rem; }
-  .hymn-number-n { font-size: 2.6rem; }
   .win-close { top: 14px; right: 50%; transform: translateX(50%); top: auto; bottom: 10px; }
 }
 

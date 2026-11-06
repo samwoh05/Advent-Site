@@ -1,6 +1,6 @@
 # Advent 2026 — Parish of the Nativity of the Blessed Virgin Mary
 
-A static Advent calendar site: an animated wreath hero, a door for every day from 29 November to Christmas, and a song of the day.
+A static Advent calendar site: an animated wreath hero and a door for every day from 29 November to Christmas. Each door opens onto a window with that day's reading, reflection and song of the day.
 
 ## Files
 
@@ -26,14 +26,11 @@ Empty fields show a "to be added" note on the site.
 
 ## Previewing
 
-Doors stay locked until their date. While building, open the site with:
+Every door currently opens with a click, whatever the date. Add `?today=2026-12-08` to the address to see the site as it will look on that day (today's door highlighted, wreath candles lit for that week).
 
-- `?preview` — unlocks every door
-- `?today=2026-12-08` — shows the site as it will look on that day
-
-Run locally with `python3 -m http.server` and visit http://localhost:8000/?preview
+Run locally with `python3 -m http.server` and visit http://localhost:8000/
 
 ## Settings (top of `content.js`)
 
 - `roseSunday` — which Sunday's door and wreath candle are rose (currently 4)
-- `lockFutureDoors` — set to `false` to unlock every door permanently
+- `lockFutureDoors` — currently `false`. Set to `true` to keep each door shut until its date; `?preview` in the address then unlocks them all for testing
