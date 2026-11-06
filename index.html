@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Advent 2026 — Nativity of the Blessed Virgin Mary</title>
+  <meta name="description" content="An Advent calendar for the Parish of the Nativity of the Blessed Virgin Mary: a door to open each day from 29 November to Christmas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip" href="#calendar">Skip to the calendar</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="wordmark" href="#top">
+        <svg class="wordmark-cross" viewBox="0 0 20 20" aria-hidden="true"><path d="M8.5 1h3v6h6v3h-6v9h-3v-9h-6V7h6z"/></svg>
+        <span>Advent <em>2026</em></span>
+      </a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#season">The season</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#song">Song of the day</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="holycard">
+        <p class="hero-kicker">The Parish of the Nativity of the Blessed Virgin Mary keeps</p>
+        <h1 id="hero-title" class="hero-title">Advent</h1>
+        <p class="hero-etym"><span lang="la">adventus</span>, Latin for “a coming”</p>
+
+        <svg class="wreath" id="wreath" viewBox="0 0 480 300" role="img"
+             aria-label="An Advent wreath with four candles being lit one by one, and an unlit white candle in the centre."></svg>
+
+        <ol class="themes" id="themes">
+          <li data-week="1"><span class="theme-name">Hope</span><span class="theme-line">The prophets foretell a Saviour.</span></li>
+          <li data-week="2"><span class="theme-name">Peace</span><span class="theme-line">John cries: prepare the way.</span></li>
+          <li data-week="3"><span class="theme-name">Joy</span><span class="theme-line">Rejoice, the Lord is near.</span></li>
+          <li data-week="4"><span class="theme-name">Love</span><span class="theme-line">Mary says yes to God.</span></li>
+        </ol>
+
+        <p class="hero-lede">
+          For four Sundays the Church waits in the dark, lighting one more candle each week:
+          remembering the long expectation of the Messiah, preparing to celebrate his birth at
+          Christmas, and watching for his coming again.
+        </p>
+        <p class="hero-status" id="hero-status"></p>
+        <a class="btn" href="#calendar">Open the calendar</a>
+      </div>
+    </section>
+
+    <!-- ============ THE SEASON ============ -->
+    <section class="season" id="season" aria-labelledby="season-title">
+      <h2 id="season-title" class="section-title">Keeping the season</h2>
+      <div class="season-cols">
+        <article>
+          <h3>Four weeks of waiting</h3>
+          <p>Advent opens the Church’s year. It begins on the fourth Sunday before Christmas and ends on Christmas Eve. Its mood is quiet expectation rather than celebration: the Gloria falls silent at Sunday Mass, and the readings turn to the prophets, to John the Baptist, and to Mary.</p>
+        </article>
+        <article>
+          <h3>Violet and rose</h3>
+          <p><span class="swatch swatch-violet" aria-hidden="true"></span>Violet, the colour of preparation and repentance, is worn through the season.
+          <span class="swatch swatch-rose" aria-hidden="true"></span>Rose, a lightening of violet, marks a Sunday of rejoicing as Christmas draws near.</p>
+        </article>
+        <article>
+          <h3>The wreath</h3>
+          <p>An unbroken circle for God’s eternity, evergreens for life that does not fade. One candle is lit each Sunday, so the light grows as the darkest days of the year arrive. The white candle in the centre waits for Christmas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ CALENDAR ============ -->
+    <section class="calendar" id="calendar" aria-labelledby="cal-title">
+      <div class="cal-head">
+        <h2 id="cal-title" class="section-title">The Advent calendar</h2>
+        <p class="cal-intro">A door for every day from 29 November to Christmas. Each one opens on its day.</p>
+        <p class="cal-status" id="cal-status" aria-live="polite"></p>
+      </div>
+
+      <div class="board">
+        <div class="weekdays" aria-hidden="true">
+          <span></span>
+          <span>Sunday</span><span>Monday</span><span>Tuesday</span><span>Wednesday</span><span>Thursday</span><span>Friday</span><span>Saturday</span>
+        </div>
+        <div id="weeks"></div>
+      </div>
+    </section>
+
+    <!-- ============ SONG OF THE DAY ============ -->
+    <section class="song" id="song" aria-labelledby="song-title">
+      <div class="hymnal">
+        <div class="hymn-number" aria-hidden="true">
+          <span class="hymn-number-label">Day</span>
+          <span class="hymn-number-n" id="song-n">1</span>
+        </div>
+        <div class="hymn-body">
+          <h2 id="song-title" class="section-title">Song of the day</h2>
+          <p class="rubric" id="song-date"></p>
+          <p class="hymn-title" id="song-name"></p>
+          <p class="hymn-by" id="song-by"></p>
+          <div class="hymn-player" id="song-player"></div>
+          <button class="btn btn-quiet" id="song-open" type="button">Open this day’s door</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <svg class="footer-star" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 2l3.2 11.2L34 8l-5.2 10.8L38 20l-9.2 1.2L34 32l-10.8-5.2L20 38l-3.2-10.8L6 32l5.2-10.8L2 20l9.2-1.2L6 8l10.8 5.2z"/></svg>
+    <p class="footer-verse">“The people that walked in darkness have seen a great light.” <cite>Isaiah 9:1</cite></p>
+    <p class="footer-copy">© <span id="year">2026</span> Parish of the Nativity of the Blessed Virgin Mary. All rights reserved.</p>
+    <p class="footer-credit">Website created by Samuel Yee</p>
+  </footer>
+
+  <!-- ============ DOOR WINDOW (dialog) ============ -->
+  <dialog class="window" id="window" aria-labelledby="win-title">
+    <div class="win-pane">
+      <div class="win-glass" aria-hidden="true"></div>
+      <span class="win-day" id="win-day"></span>
+      <button class="win-close" id="win-close" type="button" aria-label="Close window">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg>
+      </button>
+    </div>
+    <div class="win-page">
+      <p class="rubric" id="win-date"></p>
+      <h2 id="win-title" class="win-title"></h2>
+      <p class="win-subtitle" id="win-subtitle"></p>
+
+      <section class="win-block">
+        <h3>Scripture</h3>
+        <div id="win-reading"></div>
+      </section>
+
+      <section class="win-block">
+        <h3>Reflection</h3>
+        <div id="win-reflection"></div>
+      </section>
+
+      <section class="win-block win-song">
+        <h3>Song of the day</h3>
+        <div id="win-song"></div>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
