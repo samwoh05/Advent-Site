@@ -265,6 +265,8 @@
   let originCell = null;
   let closing = false;
   let opening = false;
+  let stepping = false;
+  let currentIdx = -1;   // index in `days` of the window last opened
 
   const songHTML = (song) => {
     if (!song || !song.title) return `<p class="placeholder">The song for this day will be added soon.</p>`;
@@ -306,6 +308,7 @@
 
   function openWindow(day, li) {
     fillWindow(day);
+    currentIdx = days.indexOf(day);
     returnTo = li.querySelector(".door");
     originEl = li.querySelector(".opening");
     originCell = li;
@@ -361,6 +364,73 @@
     const r = dlg.getBoundingClientRect();
     if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeWindow();
   } });
+
+  /* ---------- step to the next / previous day ----------
+     Mouse side buttons (forward = next, back = previous), arrow keys, and
+     Page Down / Page Up (presentation clickers). With the window open it
+     swaps to the neighbouring day; with it closed, "next" opens the door
+     after the one last viewed (or the first door). */
+  const cellFor = (day) => document.querySelector(`.cell[data-key="${day.key}"]`);
+
+  function step(dir) {
+    if (closing || opening || stepping) return;
+    const i = currentIdx < 0 ? 0 : currentIdx + dir;
+    if (i < 0 || i >= days.length) return;
+    const day = days[i], li = cellFor(day);
+    if (!li) return;
+    if (!dlg.open) return onDoor(day, li);
+    if (!isUnlocked(day)) return;
+
+    const swap = () => {
+      if (originCell) originCell.classList.remove("is-open");
+      li.classList.add("is-open");
+      fillWindow(day);
+      currentIdx = i;
+      returnTo = li.querySelector(".door");
+      originEl = li.querySelector(".opening");
+      originCell = li;
+      dlg.scrollTop = 0;
+    };
+    if (reduceMotion) return swap();
+
+    stepping = true;
+    const page = dlg.querySelector(".win-page");
+    page.animate(
+      [{ opacity: 1, transform: "none" }, { opacity: 0, transform: `translateX(${-dir * 24}px)` }],
+      { duration: 140, easing: "ease-in" }
+    ).onfinish = () => {
+      swap();
+      const back = page.animate(
+        [{ opacity: 0, transform: `translateX(${dir * 24}px)` }, { opacity: 1, transform: "none" }],
+        { duration: 220, easing: "ease-out" }
+      );
+      back.onfinish = () => { stepping = false; };
+    };
+  }
+
+  // Mouse side buttons: 3 = back, 4 = forward. preventDefault stops the
+  // browser from also going back/forward in its history.
+  const sideButton = (e) => (e.button === 3 ? -1 : e.button === 4 ? 1 : 0);
+  window.addEventListener("mousedown", (e) => { if (sideButton(e)) e.preventDefault(); });
+  window.addEventListener("mouseup", (e) => {
+    const dir = sideButton(e);
+    if (!dir) return;
+    e.preventDefault();
+    step(dir);
+  });
+  window.addEventListener("auxclick", (e) => { if (sideButton(e)) e.preventDefault(); });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    let dir = 0;
+    if (e.key === "ArrowRight") dir = 1;
+    else if (e.key === "ArrowLeft") dir = -1;
+    else if (dlg.open && e.key === "PageDown") dir = 1;   // only while open, so
+    else if (dlg.open && e.key === "PageUp") dir = -1;    // the page still scrolls
+    if (!dir) return;
+    e.preventDefault();
+    step(dir);
+  });
 
   /* ---------- go ---------- */
   buildWreath();
