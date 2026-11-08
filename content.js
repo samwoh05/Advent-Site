@@ -10,9 +10,11 @@
      reading     – Scripture reference, e.g. "Mark 13:33–37"
      readingText – the passage itself, or a short excerpt
      reflection  – your reflection; use an array for several paragraphs
-     song        – { title, by, youtubeId }
+     song        – { title, by, youtubeId } or { title, by, spotifyId }
                    youtubeId is the part after "v=" in a YouTube link,
                    e.g. https://www.youtube.com/watch?v=abc123  ->  "abc123"
+                   spotifyId is the part after "/track/" in a Spotify link,
+                   e.g. https://open.spotify.com/track/0oPd...?si=x  ->  "0oPd..."
    Anything left empty shows a quiet "to be added" note on the site.
    ===================================================================== */
 
@@ -86,7 +88,7 @@ window.ADVENT = {
       subtitle: "Christmas Day",
       reading: "John 1:1–18",
       readingText: "The Word was made flesh, and lived among us.",
-      song: { title: "O Come, All Ye Faithful", by: "Adeste Fideles", youtubeId: "" }
+      song: { title: "Feliz Navidad", by: "José Feliciano", spotifyId: "0oPdaY4dXtc3ZsaG17V972" }
     }
   }
 };
