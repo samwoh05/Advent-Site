@@ -271,7 +271,7 @@
     let html = `<p class="hymn-title">${esc(song.title)}</p>`;
     if (song.by) html += `<p class="hymn-by">${esc(song.by)}</p>`;
     if (song.spotifyId) {
-      html += `<div class="player-frame player-spotify"><iframe src="https://open.spotify.com/embed/track/${encodeURIComponent(song.spotifyId)}" title="${esc(song.title)}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+      html += `<div class="player-frame player-spotify"><iframe src="https://open.spotify.com/embed/track/${encodeURIComponent(song.spotifyId)}" title="${esc(song.title)}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>`;
     } else if (song.youtubeId) {
       html += `<div class="player-frame"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(song.youtubeId)}" title="${esc(song.title)}" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`;
     } else {
