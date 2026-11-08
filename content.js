@@ -67,18 +67,19 @@ window.ADVENT = {
       title: "The Immaculate Conception of the Blessed Virgin Mary",
       subtitle: "Solemnity",
       reading: "Luke 1:26–38",
-      song: { title: "Immaculate Mary", by: "The Lourdes Hymn", youtubeId: "" }
+      song: { title: "Mary, Did You Know?", by: "Pentatonix", spotifyId: "4z8sz6E4YyFuEkv5o7IJni" }
     },
     "2026-12-09": { subtitle: "Saint Juan Diego" },
     "2026-12-11": {
-      activity: "Set up a Nativity scene at your home."
+      activity: "Set up a Nativity scene at your home.",
+      song: { title: "God Rest Ye Merry Gentlemen", by: "Pentatonix", spotifyId: "6dVa1lUKHU2Jqkh6530irt" }
     },
     "2026-12-12": { title: "Our Lady of Guadalupe" },
     "2026-12-13": {
       title: "Third Sunday of Advent",
       subtitle: "Gaudete Sunday",
       reading: "John 1:6–8, 19–28",
-      song: { title: "Gaudete", by: "Piae Cantiones, 1582", youtubeId: "" }
+      song: { title: "O Come, All Ye Faithful", by: "Pentatonix", spotifyId: "6o94nmp72lGvcFfaF6dsjZ" }
     },
     "2026-12-14": { subtitle: "Memorial of Saint John of the Cross" },
     "2026-12-15": {
@@ -95,23 +96,25 @@ window.ADVENT = {
     },
     "2026-12-19": {
       subtitle: "O Radix Jesse — O Root of Jesse",
-      activity: "Bake Christmas treats with the family and tag us on Instagram!"
+      activity: "Bake Christmas treats with the family and tag us on Instagram!",
+      song: { title: "I’ll Be Home for Christmas", by: "Pentatonix", spotifyId: "3OfiRybgoMcTtEFKuvyx0r" }
     },
     "2026-12-20": {
       title: "Fourth Sunday of Advent",
       subtitle: "O Clavis David — O Key of David",
       reading: "Luke 1:26–38",
-      song: { title: "The Angel Gabriel from Heaven Came", by: "Basque carol, arr. Edgar Pettman", youtubeId: "" }
+      song: { title: "Joy to the World", by: "Pentatonix", spotifyId: "28vlppNXOSeMYi6Mwou6qs" }
     },
     "2026-12-21": { subtitle: "O Oriens — O Morning Star" },
     "2026-12-22": { subtitle: "O Rex Gentium — O King of the Nations" },
     "2026-12-23": {
       subtitle: "O Emmanuel — O God-with-us",
-      activity: "Attend Simbang Gabi at 8pm, led by Fr. Greg."
+      activity: "Attend Simbang Gabi at 8pm, led by Fr. Greg.",
+      song: { title: "O Come, O Come Emmanuel (Live)", by: "Chris Tomlin", spotifyId: "7LsbDRyc93aBzxLXCHzLpr" }
     },
     "2026-12-24": {
       title: "Christmas Eve",
-      song: { title: "Come, Thou Long-Expected Jesus", by: "Charles Wesley, 1744", youtubeId: "" }
+      song: { title: "O Holy Night", by: "Leanna Crawford", spotifyId: "08QrYTBuWNfFZtv93K1X8T" }
     },
     "2026-12-25": {
       title: "The Nativity of the Lord",
