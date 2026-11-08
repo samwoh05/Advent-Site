@@ -20,10 +20,9 @@ window.ADVENT = {
   year: 2026,
   firstSunday: "2026-11-29",
 
-  // Which Sunday's door is rose. Set to 4 as requested.
-  // Note: liturgically, rose is worn on Gaudete Sunday — the THIRD Sunday.
-  // Change this to 3 to follow that tradition (wreath candle follows too).
-  roseSunday: 4,
+  // Which Sunday is rose (door, wreath candle and theme label all follow).
+  // 3 = Gaudete Sunday (Joy), the traditional rose Sunday.
+  roseSunday: 3,
 
   // false: every door opens with a click, whatever the date.
   // true:  doors for future days stay shut until their date
@@ -37,7 +36,7 @@ window.ADVENT = {
       reading: "Mark 13:33–37",
       readingText: "Be on your guard, stay awake, because you never know when the time will come.",
       reflection: "",
-      song: { title: "Creator of the Stars of Night", by: "Conditor alme siderum, 7th-century hymn", youtubeId: "" }
+      song: { title: "Creator of the Stars of Night", by: "Conditor alme siderum, 7th-century hymn", spotifyId: "" }
     },
     "2026-11-30": { title: "Saint Andrew, Apostle", subtitle: "Feast" },
     "2026-12-03": { subtitle: "Memorial of Saint Francis Xavier" },
