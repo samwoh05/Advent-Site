@@ -10,6 +10,8 @@
      reading     – Scripture reference, e.g. "Mark 13:33–37"
      readingText – the passage itself, or a short excerpt
      reflection  – your reflection; use an array for several paragraphs
+     activity    – use instead of reflection: the window heading then
+                   reads "Activity" instead of "Reflection"
      song        – { title, by, youtubeId } or { title, by, spotifyId }
                    youtubeId is the part after "v=" in a YouTube link,
                    e.g. https://www.youtube.com/watch?v=abc123  ->  "abc123"
@@ -41,7 +43,19 @@ window.ADVENT = {
       song: { title: "Creator of the Stars of Night", by: "Conditor alme siderum, 7th-century hymn", spotifyId: "" }
     },
     "2026-11-30": { title: "Saint Andrew, Apostle", subtitle: "Feast" },
-    "2026-12-03": { subtitle: "Memorial of Saint Francis Xavier" },
+    "2026-12-01": {
+      reflection: "What’s your disposition entering the Advent season, and what is something you’re seeking hope for in your life?"
+    },
+    "2026-12-02": {
+      activity: "Create a wishlist of what you want to achieve going into the New Year."
+    },
+    "2026-12-03": {
+      subtitle: "Memorial of Saint Francis Xavier",
+      activity: "Go on a rosary walk in nature."
+    },
+    "2026-12-04": {
+      activity: "Go for Holy Hour at Nativity."
+    },
     "2026-12-06": {
       title: "Second Sunday of Advent",
       reading: "Mark 1:1–8",
@@ -56,6 +70,9 @@ window.ADVENT = {
       song: { title: "Immaculate Mary", by: "The Lourdes Hymn", youtubeId: "" }
     },
     "2026-12-09": { subtitle: "Saint Juan Diego" },
+    "2026-12-11": {
+      activity: "Set up a Nativity scene at your home."
+    },
     "2026-12-12": { title: "Our Lady of Guadalupe" },
     "2026-12-13": {
       title: "Third Sunday of Advent",
@@ -64,12 +81,22 @@ window.ADVENT = {
       song: { title: "Gaudete", by: "Piae Cantiones, 1582", youtubeId: "" }
     },
     "2026-12-14": { subtitle: "Memorial of Saint John of the Cross" },
+    "2026-12-15": {
+      activity: "Call or meet a friend and tell them how much joy they bring into your life."
+    },
     "2026-12-17": {
       subtitle: "O Sapientia — O Wisdom",
+      reflection: "What are you grateful for this year?",
       song: { title: "O Come, O Come, Emmanuel", by: "Veni Emmanuel", youtubeId: "" }
     },
-    "2026-12-18": { subtitle: "O Adonai — O Lord of Israel" },
-    "2026-12-19": { subtitle: "O Radix Jesse — O Root of Jesse" },
+    "2026-12-18": {
+      subtitle: "O Adonai — O Lord of Israel",
+      activity: "Go for the Penitential Service."
+    },
+    "2026-12-19": {
+      subtitle: "O Radix Jesse — O Root of Jesse",
+      activity: "Bake Christmas treats with the family and tag us on Instagram!"
+    },
     "2026-12-20": {
       title: "Fourth Sunday of Advent",
       subtitle: "O Clavis David — O Key of David",
@@ -78,7 +105,10 @@ window.ADVENT = {
     },
     "2026-12-21": { subtitle: "O Oriens — O Morning Star" },
     "2026-12-22": { subtitle: "O Rex Gentium — O King of the Nations" },
-    "2026-12-23": { subtitle: "O Emmanuel — O God-with-us" },
+    "2026-12-23": {
+      subtitle: "O Emmanuel — O God-with-us",
+      activity: "Attend Simbang Gabi at 8pm, led by Fr. Greg."
+    },
     "2026-12-24": {
       title: "Christmas Eve",
       song: { title: "Come, Thou Long-Expected Jesus", by: "Charles Wesley, 1744", youtubeId: "" }

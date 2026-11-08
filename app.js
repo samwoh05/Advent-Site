@@ -292,7 +292,11 @@
     if (d.readingText) reading += `<p class="reading-text">${esc(d.readingText)}</p>`;
     document.getElementById("win-reading").innerHTML = reading || `<p class="placeholder">Today’s reading will be added soon.</p>`;
 
-    const refl = Array.isArray(d.reflection) ? d.reflection : (d.reflection ? [d.reflection] : []);
+    // A day can have an activity instead of a reflection; the heading follows.
+    const isActivity = !!d.activity;
+    const body = isActivity ? d.activity : d.reflection;
+    const refl = Array.isArray(body) ? body : (body ? [body] : []);
+    document.getElementById("win-reflection-heading").textContent = isActivity ? "Activity" : "Reflection";
     document.getElementById("win-reflection").innerHTML = refl.length
       ? refl.map((p) => `<p>${esc(p)}</p>`).join("")
       : `<p class="placeholder">A reflection for this day will be added soon.</p>`;
