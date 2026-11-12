@@ -1,6 +1,6 @@
 # Advent 2026 — Parish of the Nativity of the Blessed Virgin Mary
 
-A static Advent calendar site: an animated wreath hero and a door for every day from 29 November to Christmas. Each door opens onto a window with that day's reading, reflection and song of the day.
+A static Advent calendar site: an animated wreath hero and a church front with a door or window for every day from 29 November to Christmas (Sundays are the violet and rose doors, Christmas the great gold door). Each one opens onto a window with that day's reading, reflection and song of the day.
 
 ## Files
 

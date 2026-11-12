@@ -176,32 +176,79 @@
      CALENDAR
      ================================================================= */
   function buildCalendar() {
-    const host = document.getElementById("weeks");
+    const host = document.getElementById("church");
+
+    // Where each day sits on the church front (6 columns):
+    //   rows 2, 4, 6, 8 – one storey of weekday windows per week, under a
+    //                     stone band naming the week (rows 1, 3, 5, 7)
+    //   row 9           – ground floor: the four Sunday doors
+    //   Christmas       – the great central portal, columns 3–4, rising
+    //                     through the fourth-week storey to the ground
+    const w4 = days.filter((d) => d.week === 4 && d.kind === "weekday");
+    const tallPortal = w4.length <= 4;
+    const w4Slots = { 0: [], 1: [2], 2: [2, 5], 3: [1, 2, 5], 4: [1, 2, 5, 6] }[w4.length];
+    const sundayCols = [1, 2, 5, 6];
+    const place = (day) => {
+      if (day.kind === "christmas") return tallPortal ? ["8 / span 2", "3 / span 2"] : ["9", "3 / span 2"];
+      if (day.date.getDay() === 0) return ["9", String(sundayCols[day.week - 1])];
+      if (day.week === 4 && tallPortal) return ["8", String(w4Slots[w4.indexOf(day)])];
+      return [String(day.week * 2), String(day.date.getDay())];
+    };
+
+    host.innerHTML = `
+      <svg class="gable" viewBox="0 0 600 196" aria-hidden="true">
+        <defs>
+          <pattern id="courses" width="600" height="18" patternUnits="userSpaceOnUse">
+            <rect width="600" height="18" fill="#CDB993"/><rect y="17" width="600" height="1" fill="rgba(110,86,52,.22)"/>
+          </pattern>
+          <radialGradient id="roseGlass" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#FFE9B0"/><stop offset=".55" stop-color="#E2C27A"/><stop offset="1" stop-color="#9C7432"/>
+          </radialGradient>
+          <radialGradient id="roseHalo" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="rgba(226,194,122,.55)"/><stop offset="1" stop-color="rgba(226,194,122,0)"/>
+          </radialGradient>
+        </defs>
+        <g class="gable-cross">
+          <rect x="294" y="2" width="12" height="60" fill="#B38B3F" stroke="#6B5224" stroke-width="1.5"/>
+          <rect x="279" y="16" width="42" height="11" fill="#B38B3F" stroke="#6B5224" stroke-width="1.5"/>
+        </g>
+        <polygon points="0,196 300,60 600,196" fill="url(#courses)"/>
+        <polyline points="2,196 300,62 598,196" fill="none" stroke="#A28B63" stroke-width="12" stroke-linejoin="miter"/>
+        <polyline points="16,196 300,76 584,196" fill="none" stroke="#E4D6B6" stroke-width="2"/>
+        <circle cx="300" cy="146" r="62" fill="url(#roseHalo)"/>
+        <circle cx="300" cy="146" r="42" fill="url(#roseGlass)" stroke="#7D6847" stroke-width="7"/>
+        <g fill-opacity=".85" stroke="#7D6847" stroke-width="2.5">
+          ${[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
+            const a = (i * Math.PI) / 4, x = (300 + Math.cos(a) * 25).toFixed(1), y = (146 + Math.sin(a) * 25).toFixed(1);
+            const fill = i === 2 ? "#C27A8C" : i % 2 ? "#3E6A86" : "#4A2C5E";
+            return `<circle cx="${x}" cy="${y}" r="10" fill="${fill}"/>`;
+          }).join("")}
+        </g>
+        <circle cx="300" cy="146" r="9" fill="#E2C27A" stroke="#7D6847" stroke-width="2.5"/>
+      </svg>
+      <div class="church-body">
+        <ol class="facade" aria-label="Advent calendar, 29 November to 25 December"></ol>
+      </div>
+      <div class="steps" aria-hidden="true"><span></span><span></span></div>`;
+
+    const facade = host.querySelector(".facade");
     const frag = document.createDocumentFragment();
-
     for (let w = 1; w <= 4; w++) {
-      const row = document.createElement("ol");
-      row.className = "week";
-      row.setAttribute("aria-label", `${ordinals[w - 1]} week of Advent: ${themes[w - 1]}`);
-
-      const label = document.createElement("li");
-      label.className = "week-label";
-      label.setAttribute("aria-hidden", "true");
-      label.innerHTML = `<small>${ordinals[w - 1]} week</small><span>${themes[w - 1]}</span>`;
-      row.appendChild(label);
-
-      const weekDays = days.filter((d) => d.week === w);
-      weekDays.forEach((day) => row.appendChild(buildDoor(day)));
-      for (let i = weekDays.length; i < 7; i++) {
-        const empty = document.createElement("li");
-        empty.className = "cell cell-empty";
-        empty.setAttribute("aria-hidden", "true");
-        empty.innerHTML = STAR;
-        row.appendChild(empty);
-      }
-      frag.appendChild(row);
+      const band = document.createElement("li");
+      band.className = "course";
+      band.setAttribute("aria-hidden", "true");
+      band.style.gridRow = String(w * 2 - 1);
+      band.innerHTML = `<span>${ordinals[w - 1]} week</span><b>${themes[w - 1]}</b>`;
+      frag.appendChild(band);
     }
-    host.appendChild(frag);
+    days.forEach((day) => {
+      const li = buildDoor(day);
+      const [row, col] = place(day);
+      li.style.gridRow = row;
+      li.style.gridColumn = col;
+      frag.appendChild(li);
+    });
+    facade.appendChild(frag);
 
     if (PREVIEW) setStatus("Preview: every door is unlocked.");
   }
@@ -216,11 +263,14 @@
     if (todayEntry && todayEntry.key === day.key) li.classList.add("is-today");
 
     const month = day.date.getMonth() === 10 ? "<small>Nov</small>" : "";
+    const caption = day.kind === "christmas" ? "Christmas"
+      : (day.kind === "sunday" || day.kind === "rose") ? themes[day.week - 1] : "";
+    const isToday = todayEntry && todayEntry.key === day.key;
     const insideWord = day.kind === "christmas" ? "Gloria!" : (day.date.getDay() === 0 ? themes[day.week - 1] : "");
 
     li.innerHTML = `
-      <button class="door" type="button" aria-label="${esc(`${fmtLong(day.date)}: ${day.title}${unlocked ? "" : " (opens on this day)"}`)}">
-        <span class="lintel">${day.date.getDate()}${month}</span>
+      <button class="door" type="button" aria-label="${esc(`${fmtLong(day.date)}${isToday ? " (today)" : ""}: ${day.title}${unlocked ? "" : " (opens on this day)"}`)}">
+        <span class="lintel">${day.date.getDate()}${month}${caption ? `<em>${caption}</em>` : ""}</span>
         <span class="opening">
           <span class="inside">${STAR}${insideWord ? `<span>${insideWord}</span>` : ""}</span>
           <span class="leaf leaf-l"><span class="face front"><span class="knob"></span></span><span class="face back"></span></span>
