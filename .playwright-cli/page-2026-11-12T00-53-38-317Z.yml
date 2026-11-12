@@ -1,0 +1,178 @@
+- generic [active] [ref=e1]:
+  - link "Skip to the calendar" [ref=e2] [cursor=pointer]:
+    - /url: "#calendar"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: "#top"
+        - generic [ref=e8]:
+          - text: Advent
+          - emphasis [ref=e9]: "2026"
+      - navigation "Main" [ref=e10]:
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "The season" [ref=e13] [cursor=pointer]:
+              - /url: "#season"
+          - listitem [ref=e14]:
+            - link "Calendar" [ref=e15] [cursor=pointer]:
+              - /url: "#calendar"
+  - main [ref=e16]:
+    - region [ref=e17]:
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: The Parish of the Nativity of the Blessed Virgin Mary keeps
+        - heading "Advent" [level=1] [ref=e20]
+        - paragraph [ref=e21]: adventus, Latin for “a coming”
+        - img "An Advent wreath with four candles being lit one by one, and an unlit white candle in the centre." [ref=e22]
+        - list [ref=e199]:
+          - listitem [ref=e200]:
+            - generic [ref=e201]: Hope
+            - generic [ref=e202]: The prophets foretell a Saviour.
+          - listitem [ref=e203]:
+            - generic [ref=e204]: Peace
+            - generic [ref=e205]: "John cries: prepare the way."
+          - listitem [ref=e206]:
+            - generic [ref=e207]: Joy
+            - generic [ref=e208]: Rejoice, the Lord is near.
+          - listitem [ref=e209]:
+            - generic [ref=e210]: Love
+            - generic [ref=e211]: Mary says yes to God.
+        - paragraph [ref=e212]: "For four Sundays the Church waits in the dark, lighting one more candle each week: remembering the long expectation of the Messiah, preparing to celebrate his birth at Christmas, and watching for his coming again."
+        - paragraph [ref=e213]: Advent begins on Sunday 29 November, in 17 days.
+        - link "Open the calendar" [ref=e214] [cursor=pointer]:
+          - /url: "#calendar"
+    - region [ref=e215]:
+      - heading "Keeping the season" [level=2] [ref=e216]
+      - generic [ref=e217]:
+        - article [ref=e218]:
+          - heading "Four weeks of waiting" [level=3] [ref=e219]
+          - paragraph [ref=e220]: "Advent opens the Church’s year. It begins on the fourth Sunday before Christmas and ends on Christmas Eve. Its mood is quiet expectation rather than celebration: the Gloria falls silent at Sunday Mass, and the readings turn to the prophets, to John the Baptist, and to Mary."
+        - article [ref=e221]:
+          - heading "Violet and rose" [level=3] [ref=e222]
+          - paragraph [ref=e223]: Violet, the colour of preparation and repentance, is worn through the season. Rose, a lightening of violet, marks a Sunday of rejoicing as Christmas draws near.
+        - article [ref=e226]:
+          - heading "The wreath" [level=3] [ref=e227]
+          - paragraph [ref=e228]: An unbroken circle for God’s eternity, evergreens for life that does not fade. One candle is lit each Sunday, so the light grows as the darkest days of the year arrive. The white candle in the centre waits for Christmas.
+    - region [ref=e229]:
+      - generic [ref=e230]:
+        - heading "The Advent calendar" [level=2] [ref=e231]
+        - paragraph [ref=e232]: A door for every day from 29 November to Christmas, each with a reading, a reflection and a song.
+        - paragraph [ref=e233]
+      - generic [ref=e234]:
+        - generic [aria-hidden] [ref=e235]:
+          - generic [ref=e237]: Sunday
+          - generic [ref=e238]: Monday
+          - generic [ref=e239]: Tuesday
+          - generic [ref=e240]: Wednesday
+          - generic [ref=e241]: Thursday
+          - generic [ref=e242]: Friday
+          - generic [ref=e243]: Saturday
+        - generic [ref=e244]:
+          - 'list "First week of Advent: Hope" [ref=e245]':
+            - listitem [aria-hidden] [ref=e246]:
+              - generic [ref=e247]: First week
+              - text: Hope
+            - listitem [ref=e248]:
+              - 'button "Sunday 29 November: First Sunday of Advent" [ref=e249] [cursor=pointer]':
+                - generic [ref=e250]: 29Nov
+                - generic [ref=e251]: Hope
+            - listitem [ref=e264]:
+              - 'button "Monday 30 November: Saint Andrew, Apostle" [ref=e265] [cursor=pointer]':
+                - generic [ref=e266]: 30Nov
+            - listitem [ref=e279]:
+              - 'button "Tuesday 1 December: Tuesday of the First Week of Advent" [ref=e280] [cursor=pointer]':
+                - generic [ref=e281]: "1"
+            - listitem [ref=e294]:
+              - 'button "Wednesday 2 December: Wednesday of the First Week of Advent" [ref=e295] [cursor=pointer]':
+                - generic [ref=e296]: "2"
+            - listitem [ref=e309]:
+              - 'button "Thursday 3 December: Thursday of the First Week of Advent" [ref=e310] [cursor=pointer]':
+                - generic [ref=e311]: "3"
+            - listitem [ref=e324]:
+              - 'button "Friday 4 December: Friday of the First Week of Advent" [ref=e325] [cursor=pointer]':
+                - generic [ref=e326]: "4"
+            - listitem [ref=e339]:
+              - 'button "Saturday 5 December: Saturday of the First Week of Advent" [ref=e340] [cursor=pointer]':
+                - generic [ref=e341]: "5"
+          - 'list "Second week of Advent: Peace" [ref=e354]':
+            - listitem [aria-hidden] [ref=e355]:
+              - generic [ref=e356]: Second week
+              - text: Peace
+            - listitem [ref=e357]:
+              - 'button "Sunday 6 December: Second Sunday of Advent" [ref=e358] [cursor=pointer]':
+                - generic [ref=e359]: "6"
+                - generic [ref=e360]: Peace
+            - listitem [ref=e373]:
+              - 'button "Monday 7 December: Monday of the Second Week of Advent" [ref=e374] [cursor=pointer]':
+                - generic [ref=e375]: "7"
+            - listitem [ref=e388]:
+              - 'button "Tuesday 8 December: The Immaculate Conception of the Blessed Virgin Mary" [ref=e389] [cursor=pointer]':
+                - generic [ref=e390]: "8"
+            - listitem [ref=e403]:
+              - 'button "Wednesday 9 December: Wednesday of the Second Week of Advent" [ref=e404] [cursor=pointer]':
+                - generic [ref=e405]: "9"
+            - listitem [ref=e418]:
+              - 'button "Thursday 10 December: Thursday of the Second Week of Advent" [ref=e419] [cursor=pointer]':
+                - generic [ref=e420]: "10"
+            - listitem [ref=e433]:
+              - 'button "Friday 11 December: Friday of the Second Week of Advent" [ref=e434] [cursor=pointer]':
+                - generic [ref=e435]: "11"
+            - listitem [ref=e448]:
+              - 'button "Saturday 12 December: Our Lady of Guadalupe" [ref=e449] [cursor=pointer]':
+                - generic [ref=e450]: "12"
+          - 'list "Third week of Advent: Joy" [ref=e463]':
+            - listitem [aria-hidden] [ref=e464]:
+              - generic [ref=e465]: Third week
+              - text: Joy
+            - listitem [ref=e466]:
+              - 'button "Sunday 13 December: Third Sunday of Advent" [ref=e467] [cursor=pointer]':
+                - generic [ref=e468]: "13"
+                - generic [ref=e469]: Joy
+            - listitem [ref=e482]:
+              - 'button "Monday 14 December: Monday of the Third Week of Advent" [ref=e483] [cursor=pointer]':
+                - generic [ref=e484]: "14"
+            - listitem [ref=e497]:
+              - 'button "Tuesday 15 December: Tuesday of the Third Week of Advent" [ref=e498] [cursor=pointer]':
+                - generic [ref=e499]: "15"
+            - listitem [ref=e512]:
+              - 'button "Wednesday 16 December: Wednesday of the Third Week of Advent" [ref=e513] [cursor=pointer]':
+                - generic [ref=e514]: "16"
+            - listitem [ref=e527]:
+              - 'button "Thursday 17 December: Thursday of the Third Week of Advent" [ref=e528] [cursor=pointer]':
+                - generic [ref=e529]: "17"
+            - listitem [ref=e542]:
+              - 'button "Friday 18 December: Friday of the Third Week of Advent" [ref=e543] [cursor=pointer]':
+                - generic [ref=e544]: "18"
+            - listitem [ref=e557]:
+              - 'button "Saturday 19 December: Saturday of the Third Week of Advent" [ref=e558] [cursor=pointer]':
+                - generic [ref=e559]: "19"
+          - 'list "Fourth week of Advent: Love" [ref=e572]':
+            - listitem [aria-hidden] [ref=e573]:
+              - generic [ref=e574]: Fourth week
+              - text: Love
+            - listitem [ref=e575]:
+              - 'button "Sunday 20 December: Fourth Sunday of Advent" [ref=e576] [cursor=pointer]':
+                - generic [ref=e577]: "20"
+                - generic [ref=e578]: Love
+            - listitem [ref=e591]:
+              - 'button "Monday 21 December: Monday of the Fourth Week of Advent" [ref=e592] [cursor=pointer]':
+                - generic [ref=e593]: "21"
+            - listitem [ref=e606]:
+              - 'button "Tuesday 22 December: Tuesday of the Fourth Week of Advent" [ref=e607] [cursor=pointer]':
+                - generic [ref=e608]: "22"
+            - listitem [ref=e621]:
+              - 'button "Wednesday 23 December: Wednesday of the Fourth Week of Advent" [ref=e622] [cursor=pointer]':
+                - generic [ref=e623]: "23"
+            - listitem [ref=e636]:
+              - 'button "Thursday 24 December: Christmas Eve" [ref=e637] [cursor=pointer]':
+                - generic [ref=e638]: "24"
+            - listitem [ref=e651]:
+              - 'button "Friday 25 December: The Nativity of the Lord" [ref=e652] [cursor=pointer]':
+                - generic [ref=e653]: "25"
+                - generic [ref=e654]: Gloria!
+            - listitem [aria-hidden] [ref=e667]
+  - contentinfo [ref=e670]:
+    - paragraph [ref=e673]:
+      - text: “The people that walked in darkness have seen a great light.”
+      - generic [ref=e674]: Isaiah 9:1
+    - paragraph [ref=e675]: © 2026 Parish of the Nativity of the Blessed Virgin Mary. All rights reserved.
+    - paragraph [ref=e676]: Website created by Samuel Yee
